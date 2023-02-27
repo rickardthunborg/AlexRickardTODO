@@ -68,4 +68,13 @@ li > input {
     width: 10px;
 }
 
+#filters{
+    display: flex;
+    gap: 1rem;
+    border: 2px solid lightgray;
+
+
+}
+
+
 

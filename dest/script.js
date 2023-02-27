@@ -30,14 +30,16 @@ form.onsubmit = event => {
     deleteBtn.addEventListener('click', () => {
         listItem.remove();
     });
+    checkbox.addEventListener('change', () => {
+        thingToDO.toggleComplete();
+    });
     labelCheckBox.append(checkbox);
     listItem.append(labelCheckBox);
     listItem.append(title);
     label.append(deleteBtn);
     listItem.append(label);
     list === null || list === void 0 ? void 0 : list.append(listItem);
+    input.value = '';
 };
 function DisplayList(toDoList) {
-    // listItem.append(thingToDO.title);
-    // list?.append(listItem);
 }

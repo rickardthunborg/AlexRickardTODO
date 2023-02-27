@@ -41,6 +41,10 @@ form.onsubmit = event => {
     deleteBtn.addEventListener('click', () => {
         listItem.remove();        
     })
+
+    checkbox.addEventListener('change', () => {
+        thingToDO.toggleComplete();
+    });
     
     labelCheckBox.append(checkbox);
     listItem.append(labelCheckBox);
@@ -49,12 +53,12 @@ form.onsubmit = event => {
     listItem.append(label);
     
     list?.append(listItem);
+    input.value = '';
 }
 
 function DisplayList(toDoList: Todo[]){
     
     
 
-    // listItem.append(thingToDO.title);
-    // list?.append(listItem);
+    
 }
