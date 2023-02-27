@@ -1,3 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    position: relative;
+    width: 550px;
+    margin: 0.5rem auto;
+    text-align: center;
+    font-size: 100px;
+    font-weight: 100;
+    color: #ead7d7;
+}
 
 div{
     margin-top: 15rem;
@@ -8,15 +24,16 @@ div{
 
 
 #todo-title{
-    width: 25rem;
+    width: 550px;
     height: 3rem;
     font-size: 30px;
-    padding: 1rem;
+    padding: 1em;
     border-color: lightgray;
     border-style: solid;
 }
 
 #todo-title::placeholder{
+    font-size: 20px;
     opacity: 0.5;
     font-style: italic;
 }
@@ -26,17 +43,22 @@ div{
 }
 
 ul{
+    width: 100%;
     list-style: none;
     margin: 0;
     padding: 0  ;
 }
 
 #todo-list li{
-    width: 25rem;
     height: 3rem;
     font-size: 30px;
-    padding: 1rem;
+    padding: 1em;
     border: 2px solid lightgray;
+}
+
+#content {
+    width: 550px;
+    margin: auto;
 }
 
 
