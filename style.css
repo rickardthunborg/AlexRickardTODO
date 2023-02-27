@@ -68,7 +68,7 @@ li > input {
     width: 10px;
 }
 
-#filters{
+.radio-group{
     display: flex;
     gap: 1rem;
     border: 2px solid lightgray;
