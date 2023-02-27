@@ -16,17 +16,29 @@ h1 {
 }
 
 
-
-
-
-#todo-title{
+#top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 550px;
     height: 3rem;
     font-size: 30px;
     padding: 1em;
     border-color: lightgray;
-    border-style: solid;
+    border-style: solid;   
 }
+
+
+ #todo-title{
+    flex: 1;
+    height: 3rem;
+    font-size: 30px;
+    border: none;
+} 
+
+#top label {
+    margin-left: -1em;
+} 
 
 #todo-title::placeholder{
     font-size: 20px;

@@ -69,7 +69,9 @@ if (selectedFilter == "all") {
     else if (selectedFilter == "completed") {
         displayTodos(numberOfToDos.filter(x => x.completed))
     }
-
+    
+    let counter = document.querySelector<HTMLElement>('#itemsLeft')!;
+    counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
 
 }
 
@@ -117,6 +119,5 @@ function displayTodos(numberOfToDos: Todo[]): void {
 
     })
 
-    let counter = document.querySelector<HTMLElement>('#itemsLeft')!;
-    counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
+    
 }
