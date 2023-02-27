@@ -1,6 +1,3 @@
-body{
-    
-}
 
 div{
     margin-top: 15rem;
@@ -21,10 +18,17 @@ div{
 
 #todo-title::placeholder{
     opacity: 0.5;
+    font-style: italic;
 }
 
 #todo-title:focus{
     outline: none;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0  ;
 }
 
 #todo-list li{
@@ -32,6 +36,7 @@ div{
     height: 3rem;
     font-size: 30px;
     padding: 1rem;
+    border: 2px solid lightgray;
 }
 
 
