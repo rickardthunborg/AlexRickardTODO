@@ -49,9 +49,9 @@ ul{
     padding: 0  ;
 }
 
-input[type=checkbox] {   
+/* input[type=checkbox] {   
     visibility: hidden;   
-}   
+}    */
 
 #todo-list li{
     display: flex;
@@ -94,7 +94,7 @@ li > input {
 
 }
 
-/* .radio-group input[type="radio"] {
+.radio-group input[type="radio"] {
     display: none;
   }
   
@@ -103,15 +103,13 @@ li > input {
     padding: 8px 16px;
     margin: 4px;
     background-color: #eee;
-    border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
   }
   
-.radio-group input[type="radio"]:checked + label {
-    background-color: #007bff;
-    color: #fff;
-  } */
+.selected {
+    border: 1px solid black;
+  }
 
 
 

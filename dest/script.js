@@ -2,6 +2,7 @@
 let form = document.querySelector("#todo-form");
 let list = document.querySelector("#todo-list");
 let input = document.querySelector("#todo-title");
+const filters = document.querySelectorAll('input[type=radio]');
 class Todo {
     constructor(taskName) {
         this.title = taskName;
@@ -12,39 +13,25 @@ class Todo {
     }
 }
 let numberOfToDos = [];
+filters[0].checked = true;
 form.onsubmit = event => {
     event.preventDefault();
     if ((input === null || input === void 0 ? void 0 : input.value) == "" || (input === null || input === void 0 ? void 0 : input.value) == null)
         return;
     const thingToDO = new Todo(input.value);
     numberOfToDos.push(thingToDO);
-    let listItem = document.createElement('li');
-    let title = document.createElement('p');
-    title.textContent = thingToDO.title;
-    let deleteBtn = document.createElement('button');
-    let label = document.createElement('label');
-    let checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
-    let labelCheckBox = document.createElement('label');
-    let spanCheckBox = document.createElement('span');
-    label.textContent = '❌';
-    deleteBtn.addEventListener('click', () => {
-        listItem.remove();
-    });
-    checkbox.addEventListener('change', () => {
-        thingToDO.toggleComplete();
-    });
-    labelCheckBox.append(checkbox);
-    labelCheckBox.append(spanCheckBox);
-    listItem.append(labelCheckBox);
-    listItem.append(title);
-    label.append(deleteBtn);
-    listItem.append(label);
-    list === null || list === void 0 ? void 0 : list.append(listItem);
     input.value = '';
+    toggleList();
 };
-function ToggleList(toDoList) {
-    const filters = document.getElementsByName('options');
+filters.forEach(x => x.addEventListener('change', () => {
+    filters.forEach(x => {
+        x.parentElement.classList.remove('selected');
+    });
+    x.parentElement.classList.toggle('selected');
+    toggleList();
+}));
+function toggleList() {
+    let toDos = document.getElementsByClassName('toDo');
     let selectedFilter;
     for (const filter of filters) {
         if (filter.checked) {
@@ -52,4 +39,46 @@ function ToggleList(toDoList) {
             break;
         }
     }
+    if (selectedFilter == "all") {
+        displayTodos(numberOfToDos);
+    }
+    else if (selectedFilter == "active") {
+        displayTodos(numberOfToDos.filter(x => !x.completed));
+    }
+    else if (selectedFilter == "completed") {
+        displayTodos(numberOfToDos.filter(x => x.completed));
+    }
+}
+function displayTodos(numberOfToDos) {
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+    numberOfToDos.forEach(x => {
+        let listItem = document.createElement('li');
+        let title = document.createElement('p');
+        title.textContent = x.title;
+        let deleteBtn = document.createElement('button');
+        let label = document.createElement('label');
+        let checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.checked = x.completed ? true : false;
+        let labelCheckBox = document.createElement('label');
+        let spanCheckBox = document.createElement('span');
+        label.textContent = '❌';
+        deleteBtn.addEventListener('click', () => {
+            listItem.remove();
+            numberOfToDos.splice(numberOfToDos.indexOf(x), 1);
+        });
+        checkbox.addEventListener('change', () => {
+            x.toggleComplete();
+            toggleList();
+        });
+        labelCheckBox.append(checkbox);
+        labelCheckBox.append(spanCheckBox);
+        listItem.append(labelCheckBox);
+        listItem.append(title);
+        label.append(deleteBtn);
+        listItem.append(label);
+        list === null || list === void 0 ? void 0 : list.append(listItem);
+    });
 }
