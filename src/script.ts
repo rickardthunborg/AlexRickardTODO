@@ -34,6 +34,7 @@ form.onsubmit = event => {
     let checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     let labelCheckBox = document.createElement('label')
+    let spanCheckBox = document.createElement('span');
 
 
     label.textContent = '❌';
@@ -47,6 +48,7 @@ form.onsubmit = event => {
     });
     
     labelCheckBox.append(checkbox);
+    labelCheckBox.append(spanCheckBox)
     listItem.append(labelCheckBox);
     listItem.append(title);
     label.append(deleteBtn);

@@ -49,6 +49,10 @@ ul{
     padding: 0  ;
 }
 
+input[type=checkbox] {   
+    visibility: hidden;   
+}   
+
 #todo-list li{
     display: flex;
     gap: 1em;
@@ -58,6 +62,21 @@ ul{
     padding: 1em;
     border: 2px solid lightgray;
 }
+
+#todo-list li label {
+    padding: 10px;
+}
+
+#todo-list span {   
+    height: 25px;   
+    width: 25px;   
+    background-color: red;   
+}  
+
+#todo-list span:checked {   
+    background-color: green;   
+} 
+
 
 #content {
     width: 550px;
@@ -79,7 +98,7 @@ li > input {
     display: none;
   }
   
-  .radio-group label {
+.radio-group label {
     display: inline-block;
     padding: 8px 16px;
     margin: 4px;
@@ -89,8 +108,11 @@ li > input {
     cursor: pointer;
   }
   
-  .radio-group input[type="radio"]:checked + label {
+.radio-group input[type="radio"]:checked + label {
     background-color: #007bff;
     color: #fff;
   }
+
+
+
 
