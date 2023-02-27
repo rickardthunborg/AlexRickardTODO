@@ -13,9 +13,13 @@
 <body>
     <h1>todos</h1>
     <div id="content">
-        <form id="todo-form">
-            <input type="text" id="todo-title" placeholder="What needs to be done?">
-        </form>
+        <div id="top">
+            <label><input name="toggle-all" type="checkbox">🔽</label>
+            <form id="todo-form">
+                <input type="text" id="todo-title" placeholder="What needs to be done?">
+            </form>
+        </div>
+        
         <ul id="todo-list">
         </ul>
         <ul class="radio-group">
