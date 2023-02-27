@@ -116,4 +116,7 @@ function displayTodos(numberOfToDos: Todo[]): void {
         list?.append(listItem);
 
     })
+
+    let counter = document.querySelector<HTMLElement>('#itemsLeft')!;
+    counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
 }

@@ -81,4 +81,6 @@ function displayTodos(numberOfToDos) {
         listItem.append(label);
         list === null || list === void 0 ? void 0 : list.append(listItem);
     });
+    let counter = document.querySelector('#itemsLeft');
+    counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
 }
