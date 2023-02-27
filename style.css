@@ -57,18 +57,28 @@ ul{
     padding: 0  ;
 }
 
-/* input[type=checkbox] {   
-    visibility: hidden;   
-}    */
-
 #todo-list li{
     display: flex;
     gap: 1em;
     flex-direction: row;
+    align-items: center;
     height: 3rem;
     font-size: 30px;
     padding: 1em;
     border: 2px solid lightgray;
+}
+
+#top label{
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#toggle-all{
+    opacity: 0;
+}
+
+#toggle-all:hover{
+    cursor: pointer;
 }
 
 #todo-list li label {
@@ -96,10 +106,32 @@ li > input {
 }
 
 .radio-group{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     border: 2px solid lightgray;
 
+}
+
+#todo-list p{
+    margin-left: -0.75rem;
+}
+
+.todo-item label input[type="checkbox"]{
+    margin-left: -1rem;
+}
+
+#items-left{
+    margin-left: 1.25rem;
+}
+
+#togglers {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: flex;
+    margin-left: 0rem;
 }
 
 .radio-group input[type="radio"] {
@@ -119,9 +151,12 @@ li > input {
     border: 1px solid black;
   }
 
-
 .toggle-all input[type="checkmark"]{
     display: none;
+}
+
+.delete-btn-container:hover{
+    cursor: pointer;
 }
 
 

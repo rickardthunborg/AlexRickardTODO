@@ -14,7 +14,7 @@
     <h1>todos</h1>
     <div id="content">
         <div id="top">
-            <label><input name="toggle-all" type="checkbox">🔽</label>
+            <label><input id="toggle-all" name="toggle-all" type="checkbox">🔽</label>
             <form id="todo-form">
                 <input type="text" id="todo-title" placeholder="What needs to be done?">
             </form>
@@ -23,7 +23,8 @@
         <ul id="todo-list">
         </ul>
         <ul class="radio-group">
-            <li>Items left <span id="itemsLeft"></span></li>
+            <li id="items-left">Items left: <span id="itemsLeft">0</span></li>
+            <div id="togglers">
             <li>
                 <label class="selected"><input type="radio" name="options" value="all"/> All</label>
 
@@ -36,6 +37,7 @@
                 <label><input type="radio" name="options" value="completed"/> Completed</label>
 
             </li>
+        </div>
 
         </ul>
     </div>
