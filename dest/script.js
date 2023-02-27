@@ -11,7 +11,7 @@ class Todo {
         this.completed = !this.completed;
     }
 }
-let numberOfToDos;
+let numberOfToDos = [];
 form.onsubmit = event => {
     event.preventDefault();
     if ((input === null || input === void 0 ? void 0 : input.value) == "" || (input === null || input === void 0 ? void 0 : input.value) == null)
@@ -19,8 +19,25 @@ form.onsubmit = event => {
     const thingToDO = new Todo(input.value);
     numberOfToDos.push(thingToDO);
     let listItem = document.createElement('li');
-    listItem.append(thingToDO.title);
+    let title = document.createElement('p');
+    title.textContent = thingToDO.title;
+    let deleteBtn = document.createElement('button');
+    let label = document.createElement('label');
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    let labelCheckBox = document.createElement('label');
+    label.textContent = '❌';
+    deleteBtn.addEventListener('click', () => {
+        listItem.remove();
+    });
+    labelCheckBox.append(checkbox);
+    listItem.append(labelCheckBox);
+    listItem.append(title);
+    label.append(deleteBtn);
+    listItem.append(label);
     list === null || list === void 0 ? void 0 : list.append(listItem);
 };
-function DisplayList() {
+function DisplayList(toDoList) {
+    // listItem.append(thingToDO.title);
+    // list?.append(listItem);
 }

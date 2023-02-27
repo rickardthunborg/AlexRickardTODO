@@ -50,6 +50,9 @@ ul{
 }
 
 #todo-list li{
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
     height: 3rem;
     font-size: 30px;
     padding: 1em;
@@ -59,6 +62,10 @@ ul{
 #content {
     width: 550px;
     margin: auto;
+}
+
+li > input {
+    width: 10px;
 }
 
 
