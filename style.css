@@ -94,7 +94,7 @@ li > input {
 
 }
 
-.radio-group input[type="radio"] {
+/* .radio-group input[type="radio"] {
     display: none;
   }
   
@@ -111,7 +111,7 @@ li > input {
 .radio-group input[type="radio"]:checked + label {
     background-color: #007bff;
     color: #fff;
-  }
+  } */
 
 
 

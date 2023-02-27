@@ -58,9 +58,13 @@ form.onsubmit = event => {
     input.value = '';
 }
 
-function DisplayList(toDoList: Todo[]){
-    
-    
-
-    
-}
+function ToggleList(toDoList: Todo[]) {
+    const filters = document.getElementsByName('options');
+    let selectedFilter;
+  
+    for (const filter of filters) {
+      if ((filter as HTMLInputElement).checked) {
+        selectedFilter = (filter as HTMLInputElement).value;
+        break;
+      }
+    }}

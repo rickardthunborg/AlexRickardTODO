@@ -43,5 +43,13 @@ form.onsubmit = event => {
     list === null || list === void 0 ? void 0 : list.append(listItem);
     input.value = '';
 };
-function DisplayList(toDoList) {
+function ToggleList(toDoList) {
+    const filters = document.getElementsByName('options');
+    let selectedFilter;
+    for (const filter of filters) {
+        if (filter.checked) {
+            selectedFilter = filter.value;
+            break;
+        }
+    }
 }
