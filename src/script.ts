@@ -14,10 +14,6 @@ class Todo {
         this.title = taskName;
         this.completed = false;
     }
-
-    public toggleComplete(): void {
-        this.completed = !this.completed;
-    }
 }
 
 
@@ -194,7 +190,7 @@ function displayTodos(numberOfToDos: Todo[]): void {
 
         //Marks the current todo as completed and then refreshes the list
         checkbox.addEventListener('change', () => {
-            toDo.toggleComplete();
+            toDo.completed = !toDo.completed;
             toggleList();
 
             localStorage.setItem('todos', JSON.stringify(allToDos));
