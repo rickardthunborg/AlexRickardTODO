@@ -90,6 +90,10 @@ function toggleList(): void {
         }
     }
 
+    if(!selectedFilter){
+        selectedFilter = "all";
+    }
+
     //Calls displayTodos with chosen filtering 
     if (selectedFilter == "all") {
         displayTodos(allToDos)
