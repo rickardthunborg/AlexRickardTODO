@@ -26,6 +26,8 @@ if (localStorage.getItem('todos')) {
     toggleList();
   }
 
+toggleList;
+
 filters[0].checked = true;
 
 form.onsubmit = event => {

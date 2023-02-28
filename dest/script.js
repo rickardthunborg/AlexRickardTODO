@@ -19,6 +19,7 @@ if (localStorage.getItem('todos')) {
     allToDos = JSON.parse(localStorage.getItem('todos'));
     toggleList();
 }
+toggleList;
 filters[0].checked = true;
 form.onsubmit = event => {
     event.preventDefault();
