@@ -99,23 +99,35 @@ function toggleList(): void {
 function editToDo(toDo: Todo, toDoPara: HTMLElement | null): void {
     if (toDoPara && !toDoPara.getAttribute('contenteditable')) {
 
-        //Makes the ToDo title editable and sets the cursor to the end of the title
-        //(Would be easier if title was an InputElement)
+        //Make ToDo editable
         toDoPara.setAttribute('contenteditable', 'true');
-        toDoPara.focus();
-        const range = document.createRange();
-        range.selectNodeContents(toDoPara);
-        range.collapse(false);
-        const sel = window.getSelection();
-        sel?.removeAllRanges();
-        sel?.addRange(range);
-
+        setCursor(toDoPara as HTMLElement);
+        
+        
         //When 
+        
+        ['blur', 'onkey']
+        
         toDoPara.addEventListener('blur', () => {
             toDo.title = toDoPara.textContent!;
             toDoPara.removeAttribute('contenteditable');
         })
     }
+}
+
+function setCursor(toDoPara: HTMLElement): void {
+    
+    //Sets the cursor to the end of the title
+    //(Would be easier if title was an InputElement)
+    toDoPara.focus();
+
+    const range = document.createRange();
+    range.selectNodeContents(toDoPara);
+    range.collapse(false);
+    
+    const sel = window.getSelection();
+    sel?.removeAllRanges();
+    sel?.addRange(range);
 }
 
 
