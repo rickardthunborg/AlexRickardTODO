@@ -105,6 +105,15 @@ function editToDo(toDo: Todo, toDoPara: HTMLElement | null): void {
         
         
         //When 
+
+        //Add event listener for pressing enter
+        toDoPara.addEventListener('keydown', (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                toDo.title = toDoPara.textContent!;
+                toDoPara.removeAttribute('contenteditable');
+            }
+        });
         
         ['blur', 'onkey']
         

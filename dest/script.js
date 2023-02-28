@@ -75,6 +75,14 @@ function editToDo(toDo, toDoPara) {
         toDoPara.setAttribute('contenteditable', 'true');
         setCursor(toDoPara);
         //When 
+        //Add event listener for pressing enter
+        toDoPara.addEventListener('keydown', (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                toDo.title = toDoPara.textContent;
+                toDoPara.removeAttribute('contenteditable');
+            }
+        });
         ['blur', 'onkey'];
         toDoPara.addEventListener('blur', () => {
             toDo.title = toDoPara.textContent;
