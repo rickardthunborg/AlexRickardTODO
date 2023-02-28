@@ -29,7 +29,7 @@ h1 {
 }
 
 
- #todo-title{
+#todo-title{
     flex: 1;
     height: 3rem;
     font-size: 30px;
@@ -73,6 +73,16 @@ ul{
     margin-right: 1rem;
     cursor: pointer;
 }
+
+#todo-list li:hover .delete-btn-container {
+    display: inline-block;
+}
+
+.delete-btn-container {
+    display: none;
+}
+
+
 
 #toggle-all{
     opacity: 0;
