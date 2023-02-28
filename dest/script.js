@@ -87,6 +87,10 @@ function displayTodos(numberOfToDos) {
         listItem.style.position = "relative";
         label.style.position = "absolute";
         label.style.right = "0";
+        if (x.completed) {
+            title.style.textDecoration = "line-through";
+            title.style.opacity = "0.5";
+        }
         list === null || list === void 0 ? void 0 : list.append(listItem);
     });
 }

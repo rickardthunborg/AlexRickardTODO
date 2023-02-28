@@ -97,7 +97,8 @@ function displayTodos(numberOfToDos: Todo[]): void {
         checkbox.checked = x.completed ? true : false;
         let labelCheckBox = document.createElement('label')
         let spanCheckBox = document.createElement('span');
-        
+
+
         
         label.textContent = '❌';
         
@@ -123,6 +124,12 @@ function displayTodos(numberOfToDos: Todo[]): void {
         listItem.style.position = "relative";
         label.style.position = "absolute";
         label.style.right = "0";
+
+        if(x.completed){
+            title.style.textDecoration = "line-through";
+            title.style.opacity = "0.5";
+        }
+
     
         
         list?.append(listItem);
