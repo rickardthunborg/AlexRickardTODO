@@ -5,6 +5,7 @@ let input = document.querySelector("#todo-title");
 const filters = document.querySelectorAll('input[type=radio]');
 let counter = document.querySelector('#itemsLeft');
 const toggleBtn = document.querySelector('#toggle-all');
+let allToDos = [];
 class Todo {
     constructor(taskName) {
         this.title = taskName;
@@ -14,7 +15,10 @@ class Todo {
         this.completed = !this.completed;
     }
 }
-let allToDos = [];
+if (localStorage.getItem('todos')) {
+    allToDos = JSON.parse(localStorage.getItem('todos'));
+    toggleList();
+}
 filters[0].checked = true;
 form.onsubmit = event => {
     event.preventDefault();
@@ -24,6 +28,7 @@ form.onsubmit = event => {
     allToDos.push(thingToDO);
     input.value = '';
     toggleList();
+    localStorage.setItem('todos', JSON.stringify(allToDos));
 };
 toggleBtn.addEventListener('click', checkAll);
 //Eventhandlers for the filtering buttons
@@ -126,11 +131,13 @@ function displayTodos(numberOfToDos) {
             listItem.remove();
             numberOfToDos.splice(numberOfToDos.indexOf(toDo), 1);
             counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
+            localStorage.setItem('todos', JSON.stringify(allToDos));
         });
         //Marks the current todo as completed and then refreshes the list
         checkbox.addEventListener('change', () => {
             toDo.toggleComplete();
             toggleList();
+            localStorage.setItem('todos', JSON.stringify(allToDos));
         });
         listItem.addEventListener('dblclick', (event) => {
             event.preventDefault();

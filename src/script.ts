@@ -4,6 +4,7 @@ let input = document.querySelector<HTMLInputElement>("#todo-title");
 const filters = document.querySelectorAll<HTMLInputElement>('input[type=radio]');
 let counter = document.querySelector<HTMLElement>('#itemsLeft')!;
 const toggleBtn = document.querySelector<HTMLInputElement>('#toggle-all')!;
+let allToDos: Todo[] = [];
 
 class Todo {
     public title: string;
@@ -19,7 +20,11 @@ class Todo {
     }
 }
 
-let allToDos: Todo[] = [];
+
+if (localStorage.getItem('todos')) {
+    allToDos = JSON.parse(localStorage.getItem('todos')!);
+    toggleList();
+  }
 
 filters[0].checked = true;
 
@@ -34,6 +39,9 @@ form.onsubmit = event => {
     input.value = '';
 
     toggleList();
+
+    localStorage.setItem('todos', JSON.stringify(allToDos));
+
 }
 
 toggleBtn.addEventListener('click', checkAll);
@@ -170,12 +178,18 @@ function displayTodos(numberOfToDos: Todo[]): void {
             listItem.remove();
             numberOfToDos.splice(numberOfToDos.indexOf(toDo), 1);
             counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
+
+            localStorage.setItem('todos', JSON.stringify(allToDos));
+
+            
         })
 
         //Marks the current todo as completed and then refreshes the list
         checkbox.addEventListener('change', () => {
             toDo.toggleComplete();
             toggleList();
+
+            localStorage.setItem('todos', JSON.stringify(allToDos));
         });
 
         listItem.addEventListener('dblclick', (event) => {
