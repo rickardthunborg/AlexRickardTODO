@@ -26,7 +26,6 @@ if (localStorage.getItem('todos')) {
     toggleList();
   }
 
-toggleList;
 
 filters[0].checked = true;
 
@@ -103,6 +102,9 @@ function toggleList(): void {
     }
 
     counter.textContent = allToDos.filter(x => !x.completed).length.toString();
+
+    localStorage.setItem('todos', JSON.stringify(allToDos));
+
 
 }
 

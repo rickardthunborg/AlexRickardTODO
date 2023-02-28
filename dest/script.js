@@ -19,7 +19,6 @@ if (localStorage.getItem('todos')) {
     allToDos = JSON.parse(localStorage.getItem('todos'));
     toggleList();
 }
-toggleList;
 filters[0].checked = true;
 form.onsubmit = event => {
     event.preventDefault();
@@ -74,6 +73,7 @@ function toggleList() {
         displayTodos(allToDos.filter(x => x.completed));
     }
     counter.textContent = allToDos.filter(x => !x.completed).length.toString();
+    localStorage.setItem('todos', JSON.stringify(allToDos));
 }
 function editToDo(toDo, toDoPara) {
     if (toDoPara && !toDoPara.getAttribute('contenteditable')) {
