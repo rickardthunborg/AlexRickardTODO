@@ -41,7 +41,7 @@ h1 {
 } 
 
 #todo-title::placeholder{
-    font-size: 20px;
+    font-size: 30px;
     opacity: 0.5;
     font-style: italic;
 }
@@ -140,7 +140,7 @@ li > input {
   
 .radio-group label {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 6px 16px;
     margin: 4px;
     background-color: #eee;
     border-radius: 4px;
