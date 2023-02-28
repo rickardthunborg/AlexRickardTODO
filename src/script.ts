@@ -96,9 +96,21 @@ function toggleList(): void {
 
 }
 
-function editToDo(toDo: Todo,toDoPara: HTMLElement | null): void {
+function editToDo(toDo: Todo, toDoPara: HTMLElement | null): void {
     if (toDoPara && !toDoPara.getAttribute('contenteditable')) {
+
+        //Makes the ToDo title editable and sets the cursor to the end of the title
+        //(Would be easier if title was an InputElement)
         toDoPara.setAttribute('contenteditable', 'true');
+        toDoPara.focus();
+        const range = document.createRange();
+        range.selectNodeContents(toDoPara);
+        range.collapse(false);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+
+        //When 
         toDoPara.addEventListener('blur', () => {
             toDo.title = toDoPara.textContent!;
             toDoPara.removeAttribute('contenteditable');
@@ -145,7 +157,12 @@ function displayTodos(numberOfToDos: Todo[]): void {
             toggleList();
         });
 
-        listItem.addEventListener('dblclick', () => editToDo(toDo as Todo,title as HTMLElement));
+        listItem.addEventListener('dblclick', (event) => {
+
+            event.preventDefault();
+
+            editToDo(toDo as Todo, title as HTMLElement);
+        })
 
         labelCheckBox.append(checkbox);
         labelCheckBox.append(spanCheckBox)
