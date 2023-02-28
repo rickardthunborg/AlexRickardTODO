@@ -66,6 +66,7 @@ ul{
     font-size: 30px;
     padding: 1em;
     border: 2px solid lightgray;
+    overflow: hidden;
 }
 
 #top label{
@@ -117,6 +118,9 @@ li > input {
 
 #todo-list p{
     margin-left: -0.75rem;
+    flex-wrap: nowrap;
+    max-width: 420px;
+    overflow-wrap: break-word;
 }
 
 .todo-item label input[type="checkbox"]{
