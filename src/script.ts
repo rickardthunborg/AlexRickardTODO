@@ -48,15 +48,13 @@ filters.forEach(x => x.addEventListener('change', () => {
     x.parentElement!.classList.toggle('selected')
 
     toggleList();
-
-
 }))
 
 
-function checkAll():void {
-    
-    if (allToDos.every(x => x.completed)){
-        allToDos.forEach( x => {
+function checkAll(): void {
+
+    if (allToDos.every(x => x.completed)) {
+        allToDos.forEach(x => {
             x.completed = false;
         })
         toggleList();
@@ -67,7 +65,7 @@ function checkAll():void {
         })
         toggleList();
     }
-    
+
 }
 
 
@@ -98,6 +96,16 @@ function toggleList(): void {
 
 }
 
+function editToDo(toDo: Todo,toDoPara: HTMLElement | null): void {
+    if (toDoPara && !toDoPara.getAttribute('contenteditable')) {
+        toDoPara.setAttribute('contenteditable', 'true');
+        toDoPara.addEventListener('blur', () => {
+            toDo.title = toDoPara.textContent!;
+            toDoPara.removeAttribute('contenteditable');
+        })
+    }
+}
+
 
 function displayTodos(numberOfToDos: Todo[]): void {
 
@@ -107,18 +115,18 @@ function displayTodos(numberOfToDos: Todo[]): void {
     }
 
     //Print out new items from parameter
-    numberOfToDos.forEach(x => {
+    numberOfToDos.forEach(toDo => {
 
         let listItem = document.createElement('li');
         listItem.classList.add("todo-item");
         let title = document.createElement('p');
-        title.textContent = x.title;
+        title.textContent = toDo.title;
         let deleteBtn = document.createElement('button');
         let label = document.createElement('label')
         label.classList.add("delete-btn-container");
         let checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
-        checkbox.checked = x.completed ? true : false;
+        checkbox.checked = toDo.completed ? true : false;
         let labelCheckBox = document.createElement('label')
         let spanCheckBox = document.createElement('span');
 
@@ -127,15 +135,17 @@ function displayTodos(numberOfToDos: Todo[]): void {
         //Add a destruction button on each ToDo item
         deleteBtn.addEventListener('click', () => {
             listItem.remove();
-            numberOfToDos.splice(numberOfToDos.indexOf(x), 1);
+            numberOfToDos.splice(numberOfToDos.indexOf(toDo), 1);
             counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
         })
 
         //Marks the current todo as completed and then refreshes the list
         checkbox.addEventListener('change', () => {
-            x.toggleComplete();
+            toDo.toggleComplete();
             toggleList();
         });
+
+        listItem.addEventListener('dblclick', () => editToDo(toDo as Todo,title as HTMLElement));
 
         labelCheckBox.append(checkbox);
         labelCheckBox.append(spanCheckBox)
@@ -148,7 +158,7 @@ function displayTodos(numberOfToDos: Todo[]): void {
         label.style.position = "absolute";
         label.style.right = "0";
 
-        if (x.completed) {
+        if (toDo.completed) {
             title.style.textDecoration = "line-through";
             title.style.opacity = "0.5";
         }
