@@ -19,7 +19,7 @@ class Todo {
     }
 }
 
-let numberOfToDos: Todo[] = [];
+let allToDos: Todo[] = [];
 
 filters[0].checked = true;
 
@@ -29,7 +29,7 @@ form.onsubmit = event => {
 
     const thingToDO = new Todo(input.value);
 
-    numberOfToDos.push(thingToDO);
+    allToDos.push(thingToDO);
 
     input.value = '';
 
@@ -52,10 +52,27 @@ filters.forEach(x => x.addEventListener('change', () => {
 
 }))
 
+
+function checkAll():void {
+    
+    if (allToDos.every(x => x.completed)){
+        allToDos.forEach( x => {
+            x.completed = false;
+        })
+        toggleList();
+    }
+    else {
+        allToDos.forEach(x => {
+            x.completed = true;
+        })
+        toggleList();
+    }
+    
+}
+
+
 //Function call updates ToDo list 
 function toggleList(): void {
-
-    let toDos = document.getElementsByClassName('toDo');
 
     let selectedFilter;
 
@@ -68,16 +85,16 @@ function toggleList(): void {
 
     //Calls displayTodos with chosen filtering 
     if (selectedFilter == "all") {
-        displayTodos(numberOfToDos)
+        displayTodos(allToDos)
     }
     else if (selectedFilter == "active") {
-        displayTodos(numberOfToDos.filter(x => !x.completed))
+        displayTodos(allToDos.filter(x => !x.completed))
     }
     else if (selectedFilter == "completed") {
-        displayTodos(numberOfToDos.filter(x => x.completed))
+        displayTodos(allToDos.filter(x => x.completed))
     }
 
-    counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
+    counter.textContent = allToDos.filter(x => !x.completed).length.toString();
 
 }
 
