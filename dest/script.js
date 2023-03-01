@@ -13,22 +13,26 @@ class Todo {
         this.completed = false;
     }
 }
+//If there are old ToDos in local storage, update list
 if (localStorage.getItem('todos')) {
     allToDos = JSON.parse(localStorage.getItem('todos'));
     toggleList();
 }
-filters[0].checked = true;
 form.onsubmit = event => {
     event.preventDefault();
     if ((input === null || input === void 0 ? void 0 : input.value) == "" || (input === null || input === void 0 ? void 0 : input.value) == null)
         return;
+    //Create new instance of Todo object and add to list
     const thingToDO = new Todo(input.value);
     allToDos.push(thingToDO);
     input.value = '';
+    //Update list
     toggleList();
+    //Save all todos to local storage
     localStorage.setItem('todos', JSON.stringify(allToDos));
 };
 toggleBtn.addEventListener('click', checkAll);
+//Remove completed todos
 clearBtn.addEventListener('click', () => {
     allToDos = allToDos.filter(x => !x.completed);
     toggleList();
@@ -42,6 +46,7 @@ filters.forEach(x => x.addEventListener('change', () => {
     toggleList();
 }));
 function checkAll() {
+    //Checks or unchecks all todos and then refreshes list
     if (allToDos.every(x => x.completed)) {
         allToDos.forEach(x => {
             x.completed = false;
@@ -78,7 +83,8 @@ function toggleList() {
         displayTodos(allToDos.filter(x => x.completed));
     }
     setCounter(allToDos, counter);
-    toggleClearButton(allToDos);
+    checkClearButton(allToDos);
+    checkToggleButton();
     localStorage.setItem('todos', JSON.stringify(allToDos));
 }
 function editToDo(toDo, toDoPara) {
@@ -86,8 +92,7 @@ function editToDo(toDo, toDoPara) {
         //Make ToDo editable
         toDoPara.setAttribute('contenteditable', 'true');
         setCursor(toDoPara);
-        //When 
-        //Add event listener for pressing enter
+        //Pressing enter or clicking outside of box exits editing mode
         toDoPara.addEventListener('keydown', (event) => {
             if (event.key === "Enter") {
                 event.preventDefault();
@@ -96,7 +101,6 @@ function editToDo(toDo, toDoPara) {
                 localStorage.setItem('todos', JSON.stringify(allToDos));
             }
         });
-        ['blur', 'onkey'];
         toDoPara.addEventListener('blur', () => {
             toDo.title = toDoPara.textContent;
             toDoPara.removeAttribute('contenteditable');
@@ -111,9 +115,9 @@ function setCursor(toDoPara) {
     const range = document.createRange();
     range.selectNodeContents(toDoPara);
     range.collapse(false);
-    const sel = window.getSelection();
-    sel === null || sel === void 0 ? void 0 : sel.removeAllRanges();
-    sel === null || sel === void 0 ? void 0 : sel.addRange(range);
+    const selection = window.getSelection();
+    selection === null || selection === void 0 ? void 0 : selection.removeAllRanges();
+    selection === null || selection === void 0 ? void 0 : selection.addRange(range);
 }
 function displayTodos(numberOfToDos) {
     //Clear all current listitems
@@ -140,6 +144,7 @@ function displayTodos(numberOfToDos) {
             listItem.remove();
             allToDos.splice(allToDos.indexOf(toDo), 1);
             setCounter(allToDos, counter);
+            toggleList();
             localStorage.setItem('todos', JSON.stringify(allToDos));
         });
         //Marks the current todo as completed and then refreshes the list
@@ -167,15 +172,26 @@ function displayTodos(numberOfToDos) {
         list === null || list === void 0 ? void 0 : list.append(listItem);
     });
 }
+//Displays number of remaining toDos
 function setCounter(toDos, counter) {
     const todoCount = allToDos.filter(x => !x.completed).length;
     counter.textContent = `${todoCount} ${todoCount != 1 ? "items" : "item"} left`;
 }
-function toggleClearButton(toDos) {
+//If there are no completed todos; hide button
+function checkClearButton(toDos) {
     if (toDos.some(x => x.completed)) {
         clearBtn.classList.remove('hidden');
     }
     else {
         clearBtn.classList.add('hidden');
+    }
+}
+//If there are no todos; hide toggle button
+function checkToggleButton() {
+    if (allToDos.length === 0) {
+        toggleBtn.parentElement.classList.add('hidden');
+    }
+    else {
+        toggleBtn.parentElement.classList.remove('hidden');
     }
 }
