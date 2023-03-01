@@ -188,5 +188,8 @@ footer li label:hover {
     opacity: 1.0;
 }
 
+button{
+    display: none;
+}
 
 
