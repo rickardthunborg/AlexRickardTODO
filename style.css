@@ -134,7 +134,7 @@ li > input {
 }
 
 .todo-item label input[type="checkbox"]{
-    margin-left: -1rem;
+    margin-left: -1.15rem;
 }
 
 #items-left{
