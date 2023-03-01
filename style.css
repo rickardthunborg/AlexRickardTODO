@@ -202,8 +202,16 @@ footer li label:hover {
     opacity: 0.3;
 }
 
+.check-done {
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    border: 1px solid #c7c7c7;
+}
 .completedbox {
-    background-image: url(https://cdn-icons-png.flaticon.com/512/443/443138.png)
+    background-image: url(./icons/tick.png);
+    background-size: contain;
+    border-color: #a6d785;
 }
 
 .hidden {
@@ -215,12 +223,6 @@ footer li label:hover {
     opacity: 1.0;
 }
 
-.check-done {
-    width: 20px;
-    height: 20px;
-    border-radius: 18px;
-    border: 1px solid #c7c7c7;
-}
 
 .info {
     line-height: 3em;
