@@ -130,14 +130,29 @@ function editToDo(toDo: Todo, toDoPara: HTMLElement | null): void {
         toDoPara.addEventListener('keydown', (event) => {
             if (event.key === "Enter") {
                 event.preventDefault();
+
+                //Remove todo if title is empty
+                if (toDoPara.textContent == ""){
+                    allToDos.splice(allToDos.indexOf(toDo), 1);
+                    toggleList();
+                    return
+                }
+
                 toDo.title = toDoPara.textContent!;
                 toDoPara.removeAttribute('contenteditable');
                 localStorage.setItem('todos', JSON.stringify(allToDos));
-
             }
         });
         
         toDoPara.addEventListener('blur', () => {
+
+            //Remove todo if title is empty
+            if (toDoPara.textContent == ""){
+                allToDos.splice(allToDos.indexOf(toDo), 1);
+                toggleList();
+                return
+            }
+
             toDo.title = toDoPara.textContent!;
             toDoPara.removeAttribute('contenteditable');
             localStorage.setItem('todos', JSON.stringify(allToDos));
