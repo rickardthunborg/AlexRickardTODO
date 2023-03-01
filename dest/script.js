@@ -87,12 +87,14 @@ function editToDo(toDo, toDoPara) {
                 event.preventDefault();
                 toDo.title = toDoPara.textContent;
                 toDoPara.removeAttribute('contenteditable');
+                localStorage.setItem('todos', JSON.stringify(allToDos));
             }
         });
         ['blur', 'onkey'];
         toDoPara.addEventListener('blur', () => {
             toDo.title = toDoPara.textContent;
             toDoPara.removeAttribute('contenteditable');
+            localStorage.setItem('todos', JSON.stringify(allToDos));
         });
     }
 }

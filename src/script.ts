@@ -124,6 +124,8 @@ function editToDo(toDo: Todo, toDoPara: HTMLElement | null): void {
                 event.preventDefault();
                 toDo.title = toDoPara.textContent!;
                 toDoPara.removeAttribute('contenteditable');
+                localStorage.setItem('todos', JSON.stringify(allToDos));
+
             }
         });
         
@@ -132,6 +134,8 @@ function editToDo(toDo: Todo, toDoPara: HTMLElement | null): void {
         toDoPara.addEventListener('blur', () => {
             toDo.title = toDoPara.textContent!;
             toDoPara.removeAttribute('contenteditable');
+            localStorage.setItem('todos', JSON.stringify(allToDos));
+
         })
     }
 }
