@@ -177,5 +177,8 @@ footer li label:hover {
     cursor: pointer;
 }
 
+button{
+    display: none;
+}
 
 
