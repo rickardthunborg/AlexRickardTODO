@@ -7,6 +7,7 @@
 body {
     font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
+    color: #4d4d4d;
     background-color: rgb(245,245,245);
 }
 
@@ -29,8 +30,6 @@ h1 {
     height: 3rem;
     font-size: 30px;
     padding: 1em;
-    border-color: lightgray;
-    border-style: solid;   
 }
 
 
@@ -58,11 +57,11 @@ h1 {
 ul{
     width: 100%;
     list-style: none;
-    margin: 0;
-    padding: 0  ;
+    border-top: 1px solid #e6e6e6;
 }
 
 #todo-list li{
+    position: relative;
     display: flex;
     gap: 1em;
     flex-direction: row;
@@ -70,7 +69,7 @@ ul{
     min-height: 2rem;
     font-size: 24px;
     padding: 0 1em;
-    border: 2px solid lightgray;
+    border-bottom: 1px solid #ededed;
     overflow: hidden;
 }
 
@@ -85,6 +84,11 @@ ul{
 
 .delete-btn-container {
     display: none;
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    opacity: 0.5;
+    transition: opacity 300ms ease;
 }
 
 
@@ -104,6 +108,7 @@ ul{
     width: 550px;
     margin: auto;
     background-color: #fefefe;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
 }
 
 #todo-list p{
@@ -120,9 +125,8 @@ ul{
 footer {
     display: flex;
     align-items: center;
-    border: 2px solid lightgray;
     color: #777;
-    height: 50px;
+    height: 40px;
     border-top: 1px solid #e6e6e6;
     text-align: center;
 }
@@ -169,12 +173,18 @@ footer li label:hover {
     display: none;
 }
 
+.completed {
+    text-decoration: line-through;
+    opacity: 0.3;
+}
+
 .hidden {
     visibility: hidden;
 }
 
 .delete-btn-container:hover{
     cursor: pointer;
+    opacity: 1.0;
 }
 
 button{
