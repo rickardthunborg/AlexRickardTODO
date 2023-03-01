@@ -2,7 +2,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
 
 h1 {
@@ -116,15 +120,6 @@ li > input {
     width: 10px;
 }
 
-.radio-group{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    border: 2px solid lightgray;
-
-}
 
 #todo-list p{
     margin-left: -0.75rem;
@@ -137,16 +132,33 @@ li > input {
     margin-left: -1.15rem;
 }
 
-#items-left{
-    margin-left: 1.25rem;
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid lightgray;
 }
 
-#togglers {
+.radio-group{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#itemsLeft, #clear-completed{
+    margin: 0 1rem;
+    width: 16em;
+}
+
+/* #togglers {
     grid-column-start: 2;
     grid-column-end: 4;
     display: flex;
     margin-left: 0rem;
-}
+} */
 
 .radio-group input[type="radio"] {
     display: none;
@@ -154,7 +166,7 @@ li > input {
   
 .radio-group label {
     display: inline-block;
-    padding: 6px 16px;
+    padding: 6px 10px;
     margin: 4px;
     background-color: #eee;
     border-radius: 4px;

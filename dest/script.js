@@ -72,7 +72,7 @@ function toggleList() {
     else if (selectedFilter == "completed") {
         displayTodos(allToDos.filter(x => x.completed));
     }
-    counter.textContent = allToDos.filter(x => !x.completed).length.toString();
+    setCounter(allToDos, counter);
     localStorage.setItem('todos', JSON.stringify(allToDos));
 }
 function editToDo(toDo, toDoPara) {
@@ -132,8 +132,8 @@ function displayTodos(numberOfToDos) {
         //Add a destruction button on each ToDo item
         deleteBtn.addEventListener('click', () => {
             listItem.remove();
-            numberOfToDos.splice(numberOfToDos.indexOf(toDo), 1);
-            counter.textContent = numberOfToDos.filter(x => !x.completed).length.toString();
+            allToDos.splice(allToDos.indexOf(toDo), 1);
+            setCounter(allToDos, counter);
             localStorage.setItem('todos', JSON.stringify(allToDos));
         });
         //Marks the current todo as completed and then refreshes the list
@@ -161,4 +161,8 @@ function displayTodos(numberOfToDos) {
         }
         list === null || list === void 0 ? void 0 : list.append(listItem);
     });
+}
+function setCounter(toDos, counter) {
+    const todoCount = allToDos.filter(x => !x.completed).length;
+    counter.textContent = `${todoCount} ${todoCount != 1 ? "items" : "item"} left`;
 }

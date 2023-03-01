@@ -22,26 +22,27 @@
         
         <ul id="todo-list">
         </ul>
-        <ul class="radio-group">
-            <li id="items-left">Items left: <span id="itemsLeft">0</span></li>
-            <div id="togglers">
-            <li>
-                <label class="selected"><input type="radio" name="options" value="all"/> All</label>
-
-            </li>
-            <li>
-                <label><input type="radio" name="options" value="active"/> Active</label>
-
-            </li>
-            <li>
-                <label><input type="radio" name="options" value="completed"/> Completed</label>
-
-            </li>
-        </div>
-
-        </ul>
+        <footer>
+            <span id="itemsLeft">0</span>
+            <ul class="radio-group">
+                <li>
+                    <label class="selected"><input type="radio" name="options" value="all"/> All</label>
+    
+                </li>
+                <li>
+                    <label><input type="radio" name="options" value="active"/> Active</label>
+    
+                </li>
+                <li>
+                    <label><input type="radio" name="options" value="completed"/> Completed</label>
+    
+                </li>
+            </ul>
+            <label for="clear-completed">
+                Clear completed
+                <button id="clear-completed"></button>
+            </label>
+        </footer>
     </div>
-    
-    
 </body>
 </html>
