@@ -54,10 +54,13 @@ h1 {
     outline: none;
 }
 
-ul{
+#todo-list {
     width: 100%;
-    list-style: none;
     border-top: 1px solid #e6e6e6;
+}
+
+ul {
+    list-style: none;
 }
 
 #todo-list li{
@@ -125,12 +128,32 @@ ul{
 }
 
 footer {
+    position: relative;
     display: flex;
     align-items: center;
     color: #777;
     height: 40px;
     border-top: 1px solid #e6e6e6;
     text-align: center;
+    z-index: 1;
+}
+
+.paper {
+    position: relative;
+    height: 40px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+}
+.paper1 {
+    z-index: -1;
+    top: -2.5em;
+    width: 545px;
+}
+.paper2{
+    z-index: -2;
+    top: -5em;
+    width: 535px;
 }
 
 .radio-group{
