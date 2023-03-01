@@ -127,7 +127,7 @@ ul {
     margin-left: -1.15rem;
 }
 
-footer {
+#content footer {
     position: relative;
     display: flex;
     align-items: center;
@@ -216,4 +216,9 @@ button{
     display: none;
 }
 
-
+.info {
+    line-height: 3em;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0.8;
+}
