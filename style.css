@@ -86,9 +86,10 @@ ul{
     display: none;
     position: absolute;
     right: 0;
+    margin-right: 0.5rem;
     font-size: 14px;
     opacity: 0.5;
-    transition: opacity 300ms ease;
+    transition: opacity 150ms ease;
 }
 
 
