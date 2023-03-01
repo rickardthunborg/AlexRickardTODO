@@ -182,7 +182,6 @@ function displayTodos(numberOfToDos: Todo[]): void {
         checkbox.setAttribute('type', 'checkbox');
         checkbox.checked = toDo.completed ? true : false;
         let labelCheckBox = document.createElement('label')
-        let spanCheckBox = document.createElement('span');
 
         label.textContent = '❌';
 
@@ -213,18 +212,21 @@ function displayTodos(numberOfToDos: Todo[]): void {
             editToDo(toDo as Todo, title as HTMLElement);
         })
 
+        labelCheckBox.classList.add('check-done')
+        checkbox.setAttribute('id', 'checkbox')
         labelCheckBox.append(checkbox);
-        labelCheckBox.append(spanCheckBox)
         listItem.append(labelCheckBox);
         listItem.append(title);
         label.append(deleteBtn);
         listItem.append(label);
 
         if (toDo.completed) {
-            title.classList.add('completed')
+            title.classList.add('completed');
+            labelCheckBox.classList.add('completedbox')
         }
         else {
-            title.classList.remove('completed')
+            title.classList.remove('completed');
+            labelCheckBox.classList.remove('completedbox')
         }
 
         list?.append(listItem);

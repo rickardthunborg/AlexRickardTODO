@@ -11,6 +11,7 @@ body {
     background-color: rgb(245,245,245);
 }
 
+
 h1 {
     position: relative;
     width: 550px;
@@ -36,7 +37,9 @@ h1 {
 #todo-title{
     flex: 1;
     height: 3rem;
-    font-size: 30px;
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #4d4d4d;
+    font-size: 24px;
     border: none;
 } 
 
@@ -45,7 +48,6 @@ h1 {
 } 
 
 #todo-title::placeholder{
-    font-size: 24px;
     opacity: 0.25;
     font-style: italic;
 }
@@ -71,7 +73,7 @@ ul {
     align-items: center;
     min-height: 2rem;
     font-size: 24px;
-    padding: 0 1em;
+    padding: 0 1.1rem;
     border-bottom: 1px solid #ededed;
     overflow: hidden;
 }
@@ -104,9 +106,6 @@ ul {
     cursor: pointer;
 }
 
-#todo-list li label {
-    padding: 10px 5px 10px 10px;
-}
 
 #content {
     width: 550px;
@@ -194,13 +193,17 @@ footer li label:hover {
     border-color: rgba(175, 47, 47, 0.2);
 }
 
-.toggle-all input[type="checkmark"]{
+.toggle-all input[type="checkmark"], #checkbox{
     display: none;
 }
 
 .completed {
     text-decoration: line-through;
     opacity: 0.3;
+}
+
+.completedbox {
+    background-image: url(https://cdn-icons-png.flaticon.com/512/443/443138.png)
 }
 
 .hidden {
@@ -212,8 +215,11 @@ footer li label:hover {
     opacity: 1.0;
 }
 
-button{
-    display: none;
+.check-done {
+    width: 20px;
+    height: 20px;
+    border-radius: 18px;
+    border: 1px solid #c7c7c7;
 }
 
 .info {
