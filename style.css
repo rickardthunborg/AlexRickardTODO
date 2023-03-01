@@ -32,7 +32,9 @@ h1 {
     font-size: 30px;
     padding: 1em;
 }
-
+#top > label{
+    opacity: 50%;
+}
 
 #todo-title{
     flex: 1;
