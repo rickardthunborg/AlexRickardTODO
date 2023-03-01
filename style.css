@@ -134,10 +134,11 @@ li > input {
 
 footer {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
     border: 2px solid lightgray;
+    color: #777;
+    height: 50px;
+    border-top: 1px solid #e6e6e6;
 }
 
 .radio-group{
@@ -150,28 +151,24 @@ footer {
 
 #itemsLeft, #clear-completed{
     margin: 0 1rem;
-    width: 16em;
+    width: 14em;
 }
 
-/* #togglers {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    display: flex;
-    margin-left: 0rem;
-} */
+#clear-completed {
+    width: 18em;
+    text-align: center;
+}
 
-.radio-group input[type="radio"] {
+footer input {
     display: none;
-  }
+}
   
-.radio-group label {
-    display: inline-block;
-    padding: 6px 10px;
+footer label {
+    padding: 3px 7px;
     margin: 4px;
-    background-color: #eee;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
   
 .selected {
     border: 1px solid black;
