@@ -219,13 +219,11 @@ function displayTodos(numberOfToDos: Todo[]): void {
         label.append(deleteBtn);
         listItem.append(label);
 
-        listItem.style.position = "relative";
-        label.style.position = "absolute";
-        label.style.right = "0";
-
         if (toDo.completed) {
-            title.style.textDecoration = "line-through";
-            title.style.opacity = "0.5";
+            title.classList.add('completed')
+        }
+        else {
+            title.classList.remove('completed')
         }
 
         list?.append(listItem);
