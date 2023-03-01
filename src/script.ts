@@ -4,6 +4,7 @@ let input = document.querySelector<HTMLInputElement>("#todo-title");
 const filters = document.querySelectorAll<HTMLInputElement>('input[type=radio]');
 let counter = document.querySelector<HTMLElement>('#itemsLeft')!;
 const toggleBtn = document.querySelector<HTMLInputElement>('#toggle-all')!;
+const clearBtn = document.querySelector<HTMLInputElement>('#clear-completed')!;
 let allToDos: Todo[] = [];
 
 class Todo {
@@ -42,6 +43,11 @@ form.onsubmit = event => {
 }
 
 toggleBtn.addEventListener('click', checkAll);
+
+clearBtn.addEventListener('click', () => {
+    allToDos = allToDos.filter(x => !x.completed);
+    toggleList();
+})
 
 //Eventhandlers for the filtering buttons
 filters.forEach(x => x.addEventListener('change', () => {
@@ -102,6 +108,8 @@ function toggleList(): void {
     }
     
     setCounter(allToDos, counter);
+
+    toggleClearButton(allToDos);
 
     localStorage.setItem('todos', JSON.stringify(allToDos));
 }
@@ -227,4 +235,13 @@ function displayTodos(numberOfToDos: Todo[]): void {
 function setCounter(toDos: Todo[], counter: HTMLElement): void {
     const todoCount: number = allToDos.filter(x => !x.completed).length;
     counter.textContent = `${todoCount} ${todoCount != 1 ? "items" : "item"} left`;
+}
+
+function toggleClearButton(toDos: Todo[]): void {
+    if (toDos.some(x => x.completed)){
+        clearBtn.classList.remove('hidden')
+    }
+    else {
+        clearBtn.classList.add('hidden')
+    }
 }

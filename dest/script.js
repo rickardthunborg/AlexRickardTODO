@@ -5,6 +5,7 @@ let input = document.querySelector("#todo-title");
 const filters = document.querySelectorAll('input[type=radio]');
 let counter = document.querySelector('#itemsLeft');
 const toggleBtn = document.querySelector('#toggle-all');
+const clearBtn = document.querySelector('#clear-completed');
 let allToDos = [];
 class Todo {
     constructor(taskName) {
@@ -28,6 +29,10 @@ form.onsubmit = event => {
     localStorage.setItem('todos', JSON.stringify(allToDos));
 };
 toggleBtn.addEventListener('click', checkAll);
+clearBtn.addEventListener('click', () => {
+    allToDos = allToDos.filter(x => !x.completed);
+    toggleList();
+});
 //Eventhandlers for the filtering buttons
 filters.forEach(x => x.addEventListener('change', () => {
     filters.forEach(x => {
@@ -73,6 +78,7 @@ function toggleList() {
         displayTodos(allToDos.filter(x => x.completed));
     }
     setCounter(allToDos, counter);
+    toggleClearButton(allToDos);
     localStorage.setItem('todos', JSON.stringify(allToDos));
 }
 function editToDo(toDo, toDoPara) {
@@ -165,4 +171,12 @@ function displayTodos(numberOfToDos) {
 function setCounter(toDos, counter) {
     const todoCount = allToDos.filter(x => !x.completed).length;
     counter.textContent = `${todoCount} ${todoCount != 1 ? "items" : "item"} left`;
+}
+function toggleClearButton(toDos) {
+    if (toDos.some(x => x.completed)) {
+        clearBtn.classList.remove('hidden');
+    }
+    else {
+        clearBtn.classList.add('hidden');
+    }
 }

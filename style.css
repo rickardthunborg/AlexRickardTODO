@@ -68,7 +68,7 @@ ul{
     flex-direction: row;
     align-items: center;
     min-height: 2rem;
-    font-size: 30px;
+    font-size: 24px;
     padding: 0 1em;
     border: 2px solid lightgray;
     overflow: hidden;
@@ -86,7 +86,6 @@ ul{
 .delete-btn-container {
     display: none;
 }
-
 
 
 #toggle-all{
@@ -168,6 +167,10 @@ footer li label:hover {
 
 .toggle-all input[type="checkmark"]{
     display: none;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .delete-btn-container:hover{
