@@ -14,10 +14,10 @@ body {
 
 h1 {
     position: relative;
-    width: 550px;
-    margin: 0.5rem auto;
     text-align: center;
-    font-size: 100px;
+    width: 100%;
+    font-size: 50px;
+    margin: 1em auto;
     font-weight: 100;
     color: #ead7d7;
 }
@@ -27,7 +27,7 @@ h1 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 550px;
+    width: 100%;
     height: 3rem;
     font-size: 30px;
     padding: 1em;
@@ -85,18 +85,13 @@ ul {
     cursor: pointer;
 }
 
-#todo-list li:hover .delete-btn-container {
-    display: inline-block;
-}
 
 .delete-btn-container {
-    display: none;
     position: absolute;
     right: 0;
     margin-right: 0.5rem;
     font-size: 14px;
-    opacity: 0.5;
-    transition: opacity 150ms ease;
+    opacity: 1.0;
 }
 
 
@@ -110,9 +105,7 @@ ul {
 
 
 #content {
-    max-width: 550px;
     width: 100%;
-    margin: auto;
     background-color: #fefefe;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
 }
@@ -120,7 +113,7 @@ ul {
 #todo-list p{
     margin-left: -0.75rem;
     flex-wrap: nowrap;
-    width: 450px;
+    width: 80%;
     padding: 0.5rem;
     overflow-wrap: break-word;
 }
@@ -140,23 +133,68 @@ ul {
     z-index: 1;
 }
 
-.paper {
-    position: relative;
-    height: 40px;
-    margin: auto;
-    background-color: white;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+@media (min-width: 550px) {
+    .paper {
+        position: relative;
+        height: 40px;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+    }
+    .paper1 {
+        z-index: -1;
+        top: -2.5em;
+        width: 545px;
+    }
+    .paper2{
+        z-index: -2;
+        top: -5em;
+        width: 535px;
+    }
+
+    .info{
+        margin-top: 0;
+    }
+
+    #content {
+        width: 550px;
+        margin: auto;
+    }
+
+    h1 {
+        width: 550px;
+        font-size: 100px;
+        margin: 0.5rem auto;
+    }
+
+    #top {
+        width: 550px;
+
+    }
+
+    #todo-list p{
+        width: 450px;
+    }
 }
-.paper1 {
-    z-index: -1;
-    top: -2.5em;
-    width: 545px;
+
+@media (min-width: 800px) {
+    
+    #todo-list li:hover .delete-btn-container {
+        display: inline-block;
+    }
+    
+    .delete-btn-container {
+        display: none;
+        opacity: 0.5;
+        transition: opacity 150ms ease;
+    }
+    
+    .delete-btn-container:hover{
+        cursor: pointer;
+        opacity: 1.0;
+    }
 }
-.paper2{
-    z-index: -2;
-    top: -5em;
-    width: 535px;
-}
+
 
 .radio-group{
     display: flex;
@@ -226,13 +264,8 @@ footer li label:hover {
     visibility: hidden;
 }
 
-.delete-btn-container:hover{
-    cursor: pointer;
-    opacity: 1.0;
-}
-
-
 .info {
+    margin-top: 2.5em;
     line-height: 3em;
     font-size: 10px;
     text-align: center;
