@@ -105,7 +105,8 @@ ul {
 
 
 #content {
-    width: 100%;
+    width: 96%;
+    margin: auto;
     background-color: #fefefe;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
 }
@@ -133,7 +134,7 @@ ul {
     z-index: 1;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 575px) {
     .paper {
         position: relative;
         height: 40px;
@@ -193,6 +194,12 @@ ul {
         cursor: pointer;
         opacity: 1.0;
     }
+
+    .check-done {
+        width: 25px !important;
+        height: 25px !important;
+        border-radius: 25px !important;
+    }
 }
 
 
@@ -245,9 +252,9 @@ footer li label:hover {
 
 .check-done {
     margin-left: -3px;
-    width: 25px;
-    height: 25px;
-    border-radius: 25px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
     border: 1px solid #c7c7c7;
 }
 .completedbox {
