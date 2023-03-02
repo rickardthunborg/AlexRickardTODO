@@ -219,6 +219,10 @@ footer li label:hover {
     visibility: hidden;
 }
 
+.delete-btn-container > button {
+    visibility: hidden;
+}
+
 .delete-btn-container:hover{
     cursor: pointer;
     opacity: 1.0;
