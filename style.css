@@ -17,7 +17,7 @@ h1 {
     text-align: center;
     width: 100%;
     font-size: 50px;
-    margin: 1em auto;
+    margin: 1rem auto;
     font-weight: 100;
     color: #ead7d7;
 }
@@ -37,11 +37,11 @@ h1 {
 }
 
 #todo-title{
-    flex: 1;
     height: 3rem;
     font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #4d4d4d;
     font-size: 24px;
+    width: 100%;
     border: none;
 } 
 
