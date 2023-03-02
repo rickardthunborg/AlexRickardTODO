@@ -252,7 +252,9 @@ footer li label:hover {
 }
 .completedbox {
     background-image: url(./icons/tick.png);
-    background-size: contain;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat ;
     border-color: #a6d785;
 }
 
