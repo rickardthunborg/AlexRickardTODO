@@ -108,7 +108,6 @@ function toggleList(): void {
         displayTodos(allToDos.filter(x => x.completed))
     }
     
-
     
     setCounter(allToDos, counter);
 
@@ -168,7 +167,6 @@ function setCursor(toDoPara: HTMLElement): void {
 
     const range = document.createRange();
     range.selectNodeContents(toDoPara);
-    range.collapse(false);
     
     const selection = window.getSelection();
     selection?.removeAllRanges();
@@ -188,14 +186,18 @@ function displayTodos(numberOfToDos: Todo[]): void {
 
         let listItem = document.createElement('li');
         listItem.classList.add("todo-item");
+
         let title = document.createElement('p');
         title.textContent = toDo.title;
+
         let deleteBtn = document.createElement('button');
         let label = document.createElement('label')
         label.classList.add("delete-btn-container");
+
         let checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
         checkbox.checked = toDo.completed ? true : false;
+
         let labelCheckBox = document.createElement('label')
 
         label.textContent = '❌';

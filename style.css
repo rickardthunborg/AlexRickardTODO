@@ -135,6 +135,7 @@ ul {
 }
 
 .radio-group{
+    margin-left: 0.5em;
     display: flex;
     flex-direction: row;
     gap: 0rem;
@@ -270,6 +271,10 @@ footer li label:hover {
 
     footer label {
         padding: 3px 7px;  
+    }
+
+    #content footer{
+        height: 40px;
     }
 }
 
